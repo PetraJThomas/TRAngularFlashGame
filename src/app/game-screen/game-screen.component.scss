@@ -1,0 +1,36 @@
+.game {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .results {
+    text-align: center;
+    background-color: white;
+    padding: 1rem;
+    border-radius: 1rem;
+  }
+  
+  table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+  }
+  
+  th, td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: center;
+  }
+  
+  .correct {
+    color: green;
+    font-weight: bold;
+  }
+  
+  .incorrect {
+    color: red;
+    font-weight: bold;
+  }
+  

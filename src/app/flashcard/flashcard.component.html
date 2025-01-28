@@ -1,1 +1,12 @@
-<p>flashcard works!</p>
+<mat-card class="flashcard" [@flyThrough]="animationState">
+  <mat-card-content *ngIf="!isFeedback">
+    <p class="question">{{ question }}</p>
+    <button *ngFor="let answer of answers" mat-button (click)="selectAnswer(answer)">
+      {{ answer }}
+    </button>
+  </mat-card-content>
+
+  <mat-card-content *ngIf="isFeedback">
+    <p class="feedback">{{ feedbackMessage }}</p>
+  </mat-card-content>
+</mat-card>

@@ -1,1 +1,44 @@
-<p>game-screen works!</p>
+<div class="game" *ngIf="!showResults">
+  <app-flashcard 
+    *ngIf="currentCard && !showingFeedback"
+    [question]="currentCard.question" 
+    [answers]="currentCard.answers" 
+    [correctAnswer]="currentCard.correctAnswer"
+    (transitionComplete)="handleAnswer($event)">
+  </app-flashcard>
+
+  <app-flashcard 
+    *ngIf="showingFeedback"
+    [isFeedback]="true"
+    [feedbackMessage]="feedbackMessage"
+    (transitionComplete)="loadNextCard()">
+  </app-flashcard>
+</div>
+
+<div class="results" *ngIf="showResults">
+  <h2>Let's see how you did! 🎉</h2>
+  <p>Your score: {{ score }} / {{ flashcards.length }}</p>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Question</th>
+        <th>Your Answer</th>
+        <th>Correct Answer</th>
+        <th>Result</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let response of userResponses">
+        <td>{{ response.question }}</td>
+        <td [ngClass]="{ 'correct': response.isCorrect, 'incorrect': !response.isCorrect }">
+          {{ response.userAnswer }}
+        </td>
+        <td>{{ response.correctAnswer }}</td>
+        <td>{{ response.isCorrect ? '✅' : '❌' }}</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <button style="margin-top: 1rem;" mat-raised-button color="primary" (click)="startNewGame()">Start New Game</button>
+</div>

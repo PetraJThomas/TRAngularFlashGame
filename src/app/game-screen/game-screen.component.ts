@@ -27,7 +27,58 @@ export class GameScreenComponent {
       answers: ['Microsoft', 'Facebook', 'Google'],
       correctAnswer: 'Google',
     },
+    {
+      question: 'What is the command to create a new Angular project?',
+      answers: ['ng new project-name', 'angular create project-name', 'npm create project-name'],
+      correctAnswer: 'ng new project-name',
+    },
+    {
+      question: 'Which directive is used for two-way data binding in Angular?',
+      answers: ['ngBind', 'ngModel', 'ngTwoWay'],
+      correctAnswer: 'ngModel',
+    },
+    {
+      question: 'What is the purpose of Angular CLI?',
+      answers: ['To write backend code', 'To generate Angular components, services, and modules', 'To style Angular components'],
+      correctAnswer: 'To generate Angular components, services, and modules',
+    },
+    {
+      question: 'Which file contains the root module definition in an Angular project?',
+      answers: ['main.ts', 'app.module.ts', 'index.html'],
+      correctAnswer: 'app.module.ts',
+    },
+    {
+      question: 'Which decorator is used to define an Angular component?',
+      answers: ['@Component', '@Module', '@Service'],
+      correctAnswer: '@Component',
+    },
+    {
+      question: 'What is the main advantage of Angular over jQuery?',
+      answers: ['Better DOM manipulation', 'Component-based architecture', 'Faster animations'],
+      correctAnswer: 'Component-based architecture',
+    },
+    {
+      question: 'What is dependency injection in Angular?',
+      answers: ['A way to handle API calls', 'A way to inject services into components', 'A method for styling Angular applications'],
+      correctAnswer: 'A way to inject services into components',
+    },
+    {
+      question: 'Which lifecycle hook is called once after the component is initialized?',
+      answers: ['ngOnInit', 'ngAfterViewInit', 'ngOnDestroy'],
+      correctAnswer: 'ngOnInit',
+    },
+    {
+      question: 'What is the purpose of Angular Router?',
+      answers: ['To fetch data from APIs', 'To handle navigation between views', 'To apply animations'],
+      correctAnswer: 'To handle navigation between views',
+    },
+    {
+      question: 'What does the async pipe do in Angular?',
+      answers: ['Handles HTTP requests', 'Automatically subscribes to and unsubscribes from observables', 'Creates animations'],
+      correctAnswer: 'Automatically subscribes to and unsubscribes from observables',
+    },
   ];
+  
 
   currentCard: any = null; // ✅ Track the current card dynamically
   currentIndex = 0;
@@ -65,7 +116,7 @@ export class GameScreenComponent {
   
     this.showingFeedback = true;
   
-    setTimeout(() => this.loadNextCard(), 3200);
+    setTimeout(() => this.loadNextCard(), 2000);
   }
   
 
@@ -75,17 +126,24 @@ export class GameScreenComponent {
     if (this.userResponses.length >= this.flashcards.length) {
       this.showResults = true;
     } else {
-      // ✅ Find the next unique question before updating the UI
       let nextIndex: number;
+  
+      // ✅ Find the next unique question FIRST
       do {
         nextIndex = Math.floor(Math.random() * this.flashcards.length);
       } while (this.userResponses.some(response => response.question === this.flashcards[nextIndex].question));
   
-      // ✅ Update both currentIndex and currentCard at the same time
+      console.log("Before update:", { currentIndex: this.currentIndex, nextIndex });
+  
+      // ✅ Update currentIndex FIRST
       this.currentIndex = nextIndex;
-      this.currentCard = { ...this.flashcards[this.currentIndex] }; // ✅ Ensures a fresh reference for change detection
+      this.currentCard = { ...this.flashcards[this.currentIndex] };
+  
+      console.log("After update:", { currentIndex: this.currentIndex, currentCard: this.currentCard });
     }
   }
+  
+  
   
   startNewGame() {
     this.currentIndex = 0;

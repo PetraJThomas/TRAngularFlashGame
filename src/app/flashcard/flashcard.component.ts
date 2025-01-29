@@ -46,14 +46,14 @@ export class FlashcardComponent {
     }, 500);
 
     if (this.isFeedback) {
-      // Auto-transition feedback card after 1.5 seconds
+      // Auto-transition feedback card after x seconds
       setTimeout(() => {
         this.animationState = 'zoomOut'; // Trigger fly-through effect
         setTimeout(() => this.transitionComplete.emit(), 700); // Emit event after animation
-      }, 1500);
+      }, 1000);
     }
   }
-
+  
   selectAnswer(answer: string) {
     const isCorrect = answer === this.correctAnswer;
     this.animationState = 'zoomOut'; // Zoom out effect

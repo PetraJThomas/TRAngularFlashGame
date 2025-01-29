@@ -75,18 +75,18 @@ export class GameScreenComponent {
     if (this.userResponses.length >= this.flashcards.length) {
       this.showResults = true;
     } else {
-      // ✅ Move to the next unique question
-      let nextIndex = 0;
+      // ✅ Find the next unique question before updating the UI
+      let nextIndex: number;
       do {
         nextIndex = Math.floor(Math.random() * this.flashcards.length);
       } while (this.userResponses.some(response => response.question === this.flashcards[nextIndex].question));
   
+      // ✅ Update both currentIndex and currentCard at the same time
       this.currentIndex = nextIndex;
-      this.currentCard = this.flashcards[this.currentIndex];
+      this.currentCard = { ...this.flashcards[this.currentIndex] }; // ✅ Ensures a fresh reference for change detection
     }
   }
   
-
   startNewGame() {
     this.currentIndex = 0;
     this.showResults = false;

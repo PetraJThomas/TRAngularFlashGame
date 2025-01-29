@@ -26,6 +26,11 @@ main.main-app {
   align-items: center;
   height: 100vh;
 
+  $main-background: #6c1a54;
+  $main-background-color1: #f74894;
+  $main-background-color2: #eb30c3;
+  $main-background-color3: #fdd2e5;
+
   @keyframes move {
     100% {
       transform: translate3d(0, 0, 1px) rotate(360deg);
@@ -38,7 +43,7 @@ main.main-app {
     height: 100vh;
     top: 0;
     left: 0;
-    background: #1a4e6c;
+    background: $main-background;
     overflow: hidden;
     z-index: -1;
   }
@@ -56,7 +61,7 @@ main.main-app {
   }
 
   .background span:nth-child(0) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 19%;
     left: 34%;
     animation-duration: 46s;
@@ -65,7 +70,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.875013924820846vmin currentColor;
   }
   .background span:nth-child(1) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 39%;
     left: 88%;
     animation-duration: 95s;
@@ -74,7 +79,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.681194948498622vmin currentColor;
   }
   .background span:nth-child(2) {
-    color: #d2f0fd;
+    color: $main-background-color3;
     top: 99%;
     left: 79%;
     animation-duration: 250s;
@@ -83,7 +88,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.5135044112224127vmin currentColor;
   }
   .background span:nth-child(3) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 44%;
     left: 31%;
     animation-duration: 183s;
@@ -92,7 +97,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.2171995521223744vmin currentColor;
   }
   .background span:nth-child(4) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 39%;
     left: 70%;
     animation-duration: 34s;
@@ -101,7 +106,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.19708159942846vmin currentColor;
   }
   .background span:nth-child(5) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 78%;
     left: 9%;
     animation-duration: 110s;
@@ -110,7 +115,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.4834341508504456vmin currentColor;
   }
   .background span:nth-child(6) {
-    color: #d2f0fd;
+    color: $main-background-color3;
     top: 49%;
     left: 83%;
     animation-duration: 242s;
@@ -119,7 +124,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.8706257125563148vmin currentColor;
   }
   .background span:nth-child(7) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 95%;
     left: 32%;
     animation-duration: 177s;
@@ -128,7 +133,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.165273592778967vmin currentColor;
   }
   .background span:nth-child(8) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 77%;
     left: 75%;
     animation-duration: 247s;
@@ -137,7 +142,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.4481791823975843vmin currentColor;
   }
   .background span:nth-child(9) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 51%;
     left: 31%;
     animation-duration: 265s;
@@ -146,7 +151,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.4938227718982369vmin currentColor;
   }
   .background span:nth-child(10) {
-    color: #d2f0fd;
+    color: $main-background-color3;
     top: 48%;
     left: 69%;
     animation-duration: 7s;
@@ -155,7 +160,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.019872676169085vmin currentColor;
   }
   .background span:nth-child(11) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 70%;
     left: 20%;
     animation-duration: 41s;
@@ -164,7 +169,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.9704173203190383vmin currentColor;
   }
   .background span:nth-child(12) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 56%;
     left: 22%;
     animation-duration: 166s;
@@ -173,7 +178,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.11381825531514vmin currentColor;
   }
   .background span:nth-child(13) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 55%;
     left: 11%;
     animation-duration: 25s;
@@ -182,7 +187,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.9097952877841986vmin currentColor;
   }
   .background span:nth-child(14) {
-    color: #d2f0fd;
+    color: $main-background-color3;
     top: 33%;
     left: 82%;
     animation-duration: 206s;
@@ -191,7 +196,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.034840829194247vmin currentColor;
   }
   .background span:nth-child(15) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 62%;
     left: 78%;
     animation-duration: 51s;
@@ -200,7 +205,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.7630711366463263vmin currentColor;
   }
   .background span:nth-child(16) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 92%;
     left: 52%;
     animation-duration: 15s;
@@ -209,7 +214,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.8414152681012042vmin currentColor;
   }
   .background span:nth-child(17) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 67%;
     left: 79%;
     animation-duration: 66s;
@@ -218,7 +223,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.0763517439170287vmin currentColor;
   }
   .background span:nth-child(18) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 61%;
     left: 59%;
     animation-duration: 247s;
@@ -227,7 +232,7 @@ main.main-app {
     box-shadow: -8vmin 0 1.6395592237494792vmin currentColor;
   }
   .background span:nth-child(19) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 71%;
     left: 76%;
     animation-duration: 170s;
@@ -236,7 +241,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.4814799902702918vmin currentColor;
   }
   .background span:nth-child(20) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 34%;
     left: 82%;
     animation-duration: 71s;
@@ -245,7 +250,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.6930778944813363vmin currentColor;
   }
   .background span:nth-child(21) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 42%;
     left: 21%;
     animation-duration: 255s;
@@ -254,7 +259,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.629019554356768vmin currentColor;
   }
   .background span:nth-child(22) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 57%;
     left: 22%;
     animation-duration: 13s;
@@ -263,7 +268,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.31173516180634vmin currentColor;
   }
   .background span:nth-child(23) {
-    color: #48e6f7;
+    color: $main-background-color1;
     top: 8%;
     left: 93%;
     animation-duration: 232s;
@@ -272,7 +277,7 @@ main.main-app {
     box-shadow: 8vmin 0 1.2001337091949793vmin currentColor;
   }
   .background span:nth-child(24) {
-    color: #3092eb;
+    color: $main-background-color2;
     top: 5%;
     left: 85%;
     animation-duration: 102s;

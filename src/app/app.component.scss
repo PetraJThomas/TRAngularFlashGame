@@ -31,6 +31,11 @@ main.main-app {
   $main-background-color2: #eb30c3;
   $main-background-color3: #fdd2e5;
 
+  // $main-background: var(--mat-sys-primary);
+  // $main-background-color1: var(--mat-sys-tertiary);
+  // $main-background-color2: var(--mat-sys-secondary);
+  // $main-background-color3: var(--mat-sys-background);
+
   @keyframes move {
     100% {
       transform: translate3d(0, 0, 1px) rotate(360deg);

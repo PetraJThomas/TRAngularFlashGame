@@ -1,18 +1,7 @@
 /* You can add global styles to this file, and also import other style files */
-@use '@fontsource/inter';
 @use '@angular/material' as mat;
-
-html {
-  @include mat.theme((
-    color: (
-      primary: mat.$rose-palette,
-      tertiary: mat.$magenta-palette,
-      theme-type: light,
-    ),
-    typography: Roboto,
-    density: 0
-  ));
-}
+// @use 'theme.css';
+@use '@fontsource/inter';
 
 html, body { height: 100%; }
 html

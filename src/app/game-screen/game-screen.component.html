@@ -3,45 +3,54 @@
 </div>
 
 <div class="game" *ngIf="!showResults && !loading">
-  <app-flashcard 
+  <app-flashcard
     *ngIf="currentCard && !showingFeedback"
-    [question]="currentCard.question" 
-    [answers]="currentCard.answers" 
+    [question]="currentCard.question"
+    [answers]="currentCard.answers"
     [correctAnswer]="currentCard.correctAnswer"
     (transitionComplete)="handleAnswer($event)">
   </app-flashcard>
 
-  <app-flashcard 
+  <app-flashcard
     *ngIf="showingFeedback"
     [isFeedback]="true"
-    [feedbackMessage]="feedbackMessage">
+    [feedbackMessage]="feedbackMessage"
+    [isCorrectFeedback]="isCorrectFeedback">
   </app-flashcard>
 </div>
 
 <div class="results" *ngIf="showResults">
-  <h2>Let's see how you did! 🎉</h2>
-  <p>Your score: {{ score }} / {{ flashcards.length }}</p>
+  <div class="results-header">
+    <mat-icon class="celebration-icon">celebration</mat-icon>
+    <h2>Let's see how you did!</h2>
+    <p class="score">{{ score }} / {{ flashcards.length }}</p>
+  </div>
 
-  <table>
-    <thead>
-      <tr>
-        <th>Question</th>
-        <th>Your Answer</th>
-        <th>Correct Answer</th>
-        <th>Result</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let response of userResponses">
-        <td>{{ response.question }}</td>
-        <td [ngClass]="{ 'correct': response.isCorrect, 'incorrect': !response.isCorrect }">
-          {{ response.userAnswer }}
-        </td>
-        <td>{{ response.correctAnswer }}</td>
-        <td>{{ response.isCorrect ? '✅' : '❌' }}</td>
-      </tr>
-    </tbody>
-  </table>
+  <div class="results-table-container">
+    <table>
+      <thead>
+        <tr>
+          <th>Question</th>
+          <th>Your Answer</th>
+          <th>Correct Answer</th>
+          <th>Result</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let response of userResponses">
+          <td>{{ response.question }}</td>
+          <td [ngClass]="{ 'correct': response.isCorrect, 'incorrect': !response.isCorrect }">
+            {{ response.userAnswer }}
+          </td>
+          <td>{{ response.correctAnswer }}</td>
+          <td>
+            <mat-icon *ngIf="response.isCorrect" class="correct">check_circle</mat-icon>
+            <mat-icon *ngIf="!response.isCorrect" class="incorrect">cancel</mat-icon>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
 
   <button style="margin-top: 1rem;" mat-raised-button color="primary" (click)="startNewGame()">Start New Game</button>
 </div>

@@ -23,6 +23,22 @@
     gap: 10px;
   }
 
+  .feedback-icon {
+    font-size: 2.5rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    display: block;
+    margin: 0 auto 0.5rem;
+
+    &.correct {
+      color: var(--app-success);
+    }
+
+    &.incorrect {
+      color: var(--mat-sys-error);
+    }
+  }
+
   .answer-btn {
     background-color: var(--mat-sys-primary-container) !important;
     color: var(--mat-sys-on-primary-container) !important;

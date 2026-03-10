@@ -1,7 +1,27 @@
 [
-  { "id": "angular", "name": "Angular Basics", "file": "angular.json", "count": 20 },
-  { "id": "rxjs", "name": "RxJS & Observables", "file": "rxjs.json", "count": 7 },
-  { "id": "auth-security", "name": "Auth & Security", "file": "auth-security.json", "count": 14 },
-  { "id": "dotnet", "name": ".NET & ASP.NET", "file": "dotnet.json", "count": 9 },
-  { "id": "general-web", "name": "General Web & Performance", "file": "general-web.json", "count": 6 }
+  {
+    "name": "Angular Basics",
+    "file": "angular-basics.json",
+    "count": 20
+  },
+  {
+    "name": "Auth & Security",
+    "file": "auth-security.json",
+    "count": 14
+  },
+  {
+    "name": ".NET & ASP.NET",
+    "file": "dotnet.json",
+    "count": 9
+  },
+  {
+    "name": "General Web & Performance",
+    "file": "general-web.json",
+    "count": 6
+  },
+  {
+    "name": "RxJS & Observables",
+    "file": "rxjs.json",
+    "count": 7
+  }
 ]

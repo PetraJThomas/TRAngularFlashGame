@@ -2,6 +2,7 @@ import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { CommonModule } from '@angular/common';
 import { MatButton } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { DeckService, Question } from '../deck.service';
 
 @Component({
@@ -9,7 +10,7 @@ import { DeckService, Question } from '../deck.service';
   standalone: true,
   templateUrl: './game-screen.component.html',
   styleUrls: ['./game-screen.component.scss'],
-  imports: [FlashcardComponent, CommonModule, MatButton],
+  imports: [FlashcardComponent, CommonModule, MatButton, MatIconModule],
 })
 export class GameScreenComponent implements OnInit, OnDestroy {
   private deckService = inject(DeckService);
@@ -23,6 +24,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   showResults = false;
   showingFeedback = false;
   feedbackMessage = '';
+  isCorrectFeedback = false;
   score = 0;
   userResponses: {
     question: string;
@@ -50,7 +52,8 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   }
 
   handleAnswer({ isCorrect, userAnswer }: { isCorrect: boolean; userAnswer: string }) {
-    this.feedbackMessage = isCorrect ? '🎉 You Got It!' : '💪 Better Luck Next Time.';
+    this.feedbackMessage = isCorrect ? 'You Got It!' : 'Better Luck Next Time.';
+    this.isCorrectFeedback = isCorrect;
 
     this.userResponses.push({
       question: this.currentCard.question,

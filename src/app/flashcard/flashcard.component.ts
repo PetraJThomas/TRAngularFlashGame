@@ -2,6 +2,7 @@ import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -9,7 +10,7 @@ import { CommonModule } from '@angular/common';
   standalone: true,
   templateUrl: './flashcard.component.html',
   styleUrls: ['./flashcard.component.scss'],
-  imports: [MatCardModule, MatButtonModule, CommonModule],
+  imports: [MatCardModule, MatButtonModule, MatIconModule, CommonModule],
   animations: [
     trigger('flyThrough', [
       state('default', style({ opacity: 0, transform: 'scale(0.8)' })), // First card starts small
@@ -36,6 +37,7 @@ export class FlashcardComponent implements OnDestroy {
   @Input() correctAnswer: string = '';
   @Input() isFeedback: boolean = false;
   @Input() feedbackMessage: string = '';
+  @Input() isCorrectFeedback: boolean = false;
   @Output() transitionComplete = new EventEmitter<{ isCorrect: boolean; userAnswer: string }>();
 
   animationState: 'default' | 'visible' | 'zoomOut' = 'default';

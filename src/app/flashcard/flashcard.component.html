@@ -9,6 +9,9 @@
   </mat-card-content>
 
   <mat-card-content *ngIf="isFeedback">
+    <mat-icon class="feedback-icon" [ngClass]="{ 'correct': isCorrectFeedback, 'incorrect': !isCorrectFeedback }">
+      {{ isCorrectFeedback ? 'check_circle' : 'cancel' }}
+    </mat-icon>
     <p class="feedback">{{ feedbackMessage }}</p>
   </mat-card-content>
 </mat-card>

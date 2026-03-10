@@ -1,0 +1,43 @@
+{
+  "name": "General Web & Performance",
+  "questions": [
+    {
+      "question": "What Angular mechanism detects and updates the UI when data changes?",
+      "answers": ["Change Detection", "Zone Trigger", "State Hook"],
+      "correctAnswer": "Change Detection"
+    },
+    {
+      "question": "What Angular feature improves performance by reducing unnecessary change detection?",
+      "answers": ["OnPush Change Detection", "Async Modules", "Reactive Zones"],
+      "correctAnswer": "OnPush Change Detection"
+    },
+    {
+      "question": "What is Angular Zone.js responsible for?",
+      "answers": [
+        "Tracking async operations to trigger change detection",
+        "Managing CSS animations",
+        "Handling HTTP routing"
+      ],
+      "correctAnswer": "Tracking async operations to trigger change detection"
+    },
+    {
+      "question": "Which Angular feature allows lazy loading of modules?",
+      "answers": ["Lazy Modules", "Router Lazy Loading", "Deferred Components"],
+      "correctAnswer": "Router Lazy Loading"
+    },
+    {
+      "question": "What is the main purpose of CORS in web APIs?",
+      "answers": [
+        "Allow controlled cross-origin requests between frontend and API",
+        "Improve API caching",
+        "Encrypt API responses"
+      ],
+      "correctAnswer": "Allow controlled cross-origin requests between frontend and API"
+    },
+    {
+      "question": "What technique prevents excessive API requests from clients?",
+      "answers": ["Rate Limiting", "Token Hashing", "Lazy Loading"],
+      "correctAnswer": "Rate Limiting"
+    }
+  ]
+}

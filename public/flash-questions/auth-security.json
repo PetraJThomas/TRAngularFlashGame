@@ -1,0 +1,83 @@
+{
+  "name": "Auth & Security",
+  "questions": [
+    {
+      "question": "Which Angular feature protects routes from unauthorized access?",
+      "answers": ["Route Guards", "NgModules", "Angular Pipes"],
+      "correctAnswer": "Route Guards"
+    },
+    {
+      "question": "Which HTTP status code indicates an unauthorized request?",
+      "answers": ["401", "200", "500"],
+      "correctAnswer": "401"
+    },
+    {
+      "question": "Which HTTP status code indicates access is forbidden even if authenticated?",
+      "answers": ["403", "404", "302"],
+      "correctAnswer": "403"
+    },
+    {
+      "question": "What is the difference between authentication and authorization?",
+      "answers": [
+        "Authentication verifies identity, authorization determines permissions",
+        "Authorization verifies identity, authentication determines permissions",
+        "They are the same thing"
+      ],
+      "correctAnswer": "Authentication verifies identity, authorization determines permissions"
+    },
+    {
+      "question": "What token format is commonly used for stateless API authentication?",
+      "answers": ["JWT", "XML", "OAuthKey"],
+      "correctAnswer": "JWT"
+    },
+    {
+      "question": "Where should authorization checks be enforced?",
+      "answers": ["Only in the frontend", "In the backend API", "In the browser storage"],
+      "correctAnswer": "In the backend API"
+    },
+    {
+      "question": "In a secure Angular + .NET system, what typically happens after login?",
+      "answers": [
+        "Frontend stores a token and sends it with API requests",
+        "Frontend stores the user password",
+        "Frontend directly accesses the database"
+      ],
+      "correctAnswer": "Frontend stores a token and sends it with API requests"
+    },
+    {
+      "question": "What does OAuth primarily provide?",
+      "answers": ["Authorization delegation", "Encryption of database queries", "Frontend routing"],
+      "correctAnswer": "Authorization delegation"
+    },
+    {
+      "question": "What does OpenID Connect add on top of OAuth?",
+      "answers": ["Authentication and identity information", "Database replication", "Frontend state management"],
+      "correctAnswer": "Authentication and identity information"
+    },
+    {
+      "question": "What claim in a JWT typically identifies the user?",
+      "answers": ["sub", "exp", "aud"],
+      "correctAnswer": "sub"
+    },
+    {
+      "question": "What claim in a JWT defines expiration time?",
+      "answers": ["exp", "iat", "sub"],
+      "correctAnswer": "exp"
+    },
+    {
+      "question": "Why should tokens usually be short-lived?",
+      "answers": ["Reduce risk if a token is compromised", "Increase frontend speed", "Reduce database load"],
+      "correctAnswer": "Reduce risk if a token is compromised"
+    },
+    {
+      "question": "What is a refresh token used for?",
+      "answers": ["Obtaining a new access token without re-authenticating", "Refreshing browser sessions", "Encrypting API responses"],
+      "correctAnswer": "Obtaining a new access token without re-authenticating"
+    },
+    {
+      "question": "What security principle states that users should only have access to what they need?",
+      "answers": ["Principle of Least Privilege", "Maximum Access Model", "Open Authorization"],
+      "correctAnswer": "Principle of Least Privilege"
+    }
+  ]
+}

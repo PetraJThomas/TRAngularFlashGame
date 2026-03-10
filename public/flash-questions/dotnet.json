@@ -1,0 +1,62 @@
+{
+  "name": ".NET & ASP.NET",
+  "questions": [
+    {
+      "question": "Which .NET feature maps incoming HTTP requests to methods?",
+      "answers": ["Controllers", "Repositories", "ViewModels"],
+      "correctAnswer": "Controllers"
+    },
+    {
+      "question": "Which .NET attribute defines an API route?",
+      "answers": ["[Route]", "[HttpGet]", "[Endpoint]"],
+      "correctAnswer": "[Route]"
+    },
+    {
+      "question": "Which .NET attribute is commonly used to require authentication on an endpoint?",
+      "answers": ["[Authorize]", "[Secure]", "[ValidateUser]"],
+      "correctAnswer": "[Authorize]"
+    },
+    {
+      "question": "What is the purpose of middleware in ASP.NET?",
+      "answers": [
+        "To intercept and process HTTP requests and responses",
+        "To store database data",
+        "To generate HTML templates"
+      ],
+      "correctAnswer": "To intercept and process HTTP requests and responses"
+    },
+    {
+      "question": "Why should APIs return DTOs instead of database entities?",
+      "answers": [
+        "To reduce database load",
+        "To control what data is exposed and decouple internal models",
+        "To increase server memory"
+      ],
+      "correctAnswer": "To control what data is exposed and decouple internal models"
+    },
+    {
+      "question": "What .NET feature allows services to be injected into controllers?",
+      "answers": ["Dependency Injection", "Service Loader", "Controller Binding"],
+      "correctAnswer": "Dependency Injection"
+    },
+    {
+      "question": "Which ASP.NET pipeline component handles authentication before controllers run?",
+      "answers": ["Middleware", "Repository", "View Engine"],
+      "correctAnswer": "Middleware"
+    },
+    {
+      "question": "Why should APIs avoid returning database entities directly?",
+      "answers": [
+        "To control exposed fields and prevent tight coupling",
+        "To reduce API speed",
+        "To simplify SQL queries"
+      ],
+      "correctAnswer": "To control exposed fields and prevent tight coupling"
+    },
+    {
+      "question": "What pattern is commonly used in .NET APIs to separate logic from controllers?",
+      "answers": ["Service Layer", "Template Pattern", "Observer Pattern"],
+      "correctAnswer": "Service Layer"
+    }
+  ]
+}

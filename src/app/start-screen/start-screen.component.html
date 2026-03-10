@@ -1,6 +1,18 @@
 <mat-card appearance="outlined">
-    <mat-card-header>Welcome to TR Flash Card Game</mat-card-header>
-    <mat-card-actions>
-        <a mat-stroked-button routerLink="/game">Start Game</a>
-    </mat-card-actions>
+  <div class="card-header">
+    <h1 class="header-title">TR Flash Cards</h1>
+    <p class="header-subtitle">Pick a deck to study</p>
+  </div>
+  <mat-card-content>
+    <div class="deck-grid">
+      <button class="deck-card" *ngFor="let deck of decks" (click)="selectDeck(deck.file)">
+        <span class="deck-name">{{ deck.name }}</span>
+        <span class="deck-count">{{ deck.count }} questions</span>
+      </button>
+      <button class="deck-card deck-card--all" *ngIf="decks.length" (click)="selectAll()">
+        <span class="deck-name">All Questions</span>
+        <span class="deck-count">{{ totalCount }} questions</span>
+      </button>
+    </div>
+  </mat-card-content>
 </mat-card>

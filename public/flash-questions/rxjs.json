@@ -1,0 +1,40 @@
+{
+  "name": "RxJS & Observables",
+  "questions": [
+    {
+      "question": "What does the async pipe do in Angular?",
+      "answers": ["Handles HTTP requests", "Automatically subscribes to and unsubscribes from observables", "Creates animations"],
+      "correctAnswer": "Automatically subscribes to and unsubscribes from observables"
+    },
+    {
+      "question": "Which RxJS concept represents a stream of asynchronous data?",
+      "answers": ["Observable", "Promise", "StreamPipe"],
+      "correctAnswer": "Observable"
+    },
+    {
+      "question": "Which Angular pipe is commonly used to consume Observables in templates?",
+      "answers": ["observablePipe", "async", "subscribePipe"],
+      "correctAnswer": "async"
+    },
+    {
+      "question": "What library powers Angular's reactive programming model?",
+      "answers": ["RxJS", "Redux", "SignalJS"],
+      "correctAnswer": "RxJS"
+    },
+    {
+      "question": "Which RxJS operator is commonly used to transform emitted values?",
+      "answers": ["map", "filter", "emit"],
+      "correctAnswer": "map"
+    },
+    {
+      "question": "Which RxJS operator cancels previous requests when a new value arrives?",
+      "answers": ["switchMap", "concatMap", "mergeMap"],
+      "correctAnswer": "switchMap"
+    },
+    {
+      "question": "Which RxJS operator is used to perform side effects without modifying the stream?",
+      "answers": ["tap", "map", "switchMap"],
+      "correctAnswer": "tap"
+    }
+  ]
+}

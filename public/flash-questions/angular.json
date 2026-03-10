@@ -1,0 +1,105 @@
+{
+  "name": "Angular Basics",
+  "questions": [
+    {
+      "question": "What is Angular?",
+      "answers": ["A car", "A framework", "A library"],
+      "correctAnswer": "A framework"
+    },
+    {
+      "question": "What language does Angular use?",
+      "answers": ["Java", "Python", "TypeScript"],
+      "correctAnswer": "TypeScript"
+    },
+    {
+      "question": "Who created Angular?",
+      "answers": ["Microsoft", "Facebook", "Google"],
+      "correctAnswer": "Google"
+    },
+    {
+      "question": "What is the command to create a new Angular project?",
+      "answers": ["ng new project-name", "angular create project-name", "npm create project-name"],
+      "correctAnswer": "ng new project-name"
+    },
+    {
+      "question": "Which directive is used for two-way data binding in Angular?",
+      "answers": ["ngBind", "ngModel", "ngTwoWay"],
+      "correctAnswer": "ngModel"
+    },
+    {
+      "question": "What is the purpose of Angular CLI?",
+      "answers": ["To write backend code", "To generate Angular components, services, and modules", "To style Angular components"],
+      "correctAnswer": "To generate Angular components, services, and modules"
+    },
+    {
+      "question": "Which file bootstraps a standalone Angular application?",
+      "answers": ["main.ts", "app.config.ts", "index.html"],
+      "correctAnswer": "app.config.ts"
+    },
+    {
+      "question": "Which decorator is used to define an Angular component?",
+      "answers": ["@Component", "@Module", "@Service"],
+      "correctAnswer": "@Component"
+    },
+    {
+      "question": "What is the main advantage of Angular over jQuery?",
+      "answers": ["Better DOM manipulation", "Component-based architecture", "Faster animations"],
+      "correctAnswer": "Component-based architecture"
+    },
+    {
+      "question": "What is dependency injection in Angular?",
+      "answers": ["A way to handle API calls", "A way to inject services into components", "A method for styling Angular applications"],
+      "correctAnswer": "A way to inject services into components"
+    },
+    {
+      "question": "Which lifecycle hook is called once after the component is initialized?",
+      "answers": ["ngOnInit", "ngAfterViewInit", "ngOnDestroy"],
+      "correctAnswer": "ngOnInit"
+    },
+    {
+      "question": "What is the purpose of Angular Router?",
+      "answers": ["To fetch data from APIs", "To handle navigation between views", "To apply animations"],
+      "correctAnswer": "To handle navigation between views"
+    },
+    {
+      "question": "What lifecycle hook runs when Angular detects changes to @Input properties?",
+      "answers": ["ngOnInit", "ngOnChanges", "ngAfterViewInit"],
+      "correctAnswer": "ngOnChanges"
+    },
+    {
+      "question": "Which Angular lifecycle hook is used to clean up subscriptions or resources?",
+      "answers": ["ngOnDestroy", "ngAfterViewChecked", "ngAfterContentInit"],
+      "correctAnswer": "ngOnDestroy"
+    },
+    {
+      "question": "Which lifecycle hook runs after Angular initializes the component view and child views?",
+      "answers": ["ngAfterViewInit", "ngOnInit", "ngOnChanges"],
+      "correctAnswer": "ngAfterViewInit"
+    },
+    {
+      "question": "What is the purpose of Angular services?",
+      "answers": ["To store HTML templates", "To share business logic and data across components", "To replace Angular modules"],
+      "correctAnswer": "To share business logic and data across components"
+    },
+    {
+      "question": "What Angular feature allows components to receive dependencies automatically?",
+      "answers": ["Dependency Injection", "Data Binding", "NgModules"],
+      "correctAnswer": "Dependency Injection"
+    },
+    {
+      "question": "What Angular feature allows communication from parent to child components?",
+      "answers": ["@Input", "@Inject", "@HostListener"],
+      "correctAnswer": "@Input"
+    },
+    {
+      "question": "What decorator allows a child component to emit events to its parent?",
+      "answers": ["@Input", "@Output", "@Directive"],
+      "correctAnswer": "@Output"
+    },
+    {
+      "question": "In Angular, how are HTTP requests typically made?",
+      "answers": ["HttpClient", "FetchService", "AngularRequest"],
+      "correctAnswer": "HttpClient"
+    }
+  ]
+}

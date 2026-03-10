@@ -1,4 +1,8 @@
-<div class="game" *ngIf="!showResults">
+<div class="loading" *ngIf="loading">
+  <p>Loading questions...</p>
+</div>
+
+<div class="game" *ngIf="!showResults && !loading">
   <app-flashcard 
     *ngIf="currentCard && !showingFeedback"
     [question]="currentCard.question" 

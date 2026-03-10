@@ -1,6 +1,68 @@
-mat-card-actions {
-    display: flex;
-    justify-content: center; // Centers buttons inside actions
-    padding: 16px; // Adds space inside the actions area
+mat-card {
+  width: 500px;
+  max-width: 90vw;
+  overflow: hidden;
+  padding: 0 !important;
+}
+
+.card-header {
+  text-align: center;
+  padding: 24px 16px 16px;
+  background: linear-gradient(135deg, var(--mat-sys-primary), color-mix(in srgb, var(--mat-sys-primary) 70%, var(--mat-sys-tertiary)));
+  border-radius: 12px;
+  border: 5px white solid;
+
+  .header-title {
+    margin: 0;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--mat-sys-on-primary);
+    letter-spacing: -0.02em;
   }
-  
+
+  .header-subtitle {
+    margin: 6px 0 0;
+    font-size: 0.95rem;
+    color: color-mix(in srgb, var(--mat-sys-on-primary) 80%, transparent);
+  }
+}
+
+.deck-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 12px 16px 16px;
+}
+
+.deck-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 16px 12px;
+  border: 3px solid transparent;
+  border-radius: 8px;
+  background-color: var(--mat-sys-primary-container);
+  color: var(--mat-sys-on-primary-container);
+  cursor: pointer;
+  transition: border-color 0.2s;
+  font-family: inherit;
+
+  &:hover {
+    border-color: var(--mat-sys-primary);
+  }
+
+  .deck-name {
+    font-size: 1rem;
+    font-weight: 500;
+  }
+
+  .deck-count {
+    font-size: 0.85rem;
+    opacity: 0.65;
+  }
+
+  &--all {
+    background-color: color-mix(in srgb, var(--mat-sys-primary) 20%, var(--mat-sys-primary-container));
+  }
+}

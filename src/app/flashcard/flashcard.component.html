@@ -2,7 +2,7 @@
   <mat-card-content *ngIf="!isFeedback">
     <p class="question">{{ question }}</p>
     <div class="answers">
-      <button *ngFor="let answer of answers" mat-flat-button class="answer-btn" (click)="selectAnswer(answer)">
+      <button *ngFor="let answer of shuffledAnswers" mat-flat-button class="answer-btn" (click)="selectAnswer(answer)">
         {{ answer }}
       </button>
     </div>

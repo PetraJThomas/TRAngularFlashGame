@@ -40,11 +40,13 @@ export class FlashcardComponent implements OnDestroy {
   @Input() isCorrectFeedback: boolean = false;
   @Output() transitionComplete = new EventEmitter<{ isCorrect: boolean; userAnswer: string }>();
 
+  shuffledAnswers: string[] = [];
   animationState: 'default' | 'visible' | 'zoomOut' = 'default';
   private answered = false;
   private timeoutIds: ReturnType<typeof setTimeout>[] = [];
 
   ngOnInit() {
+    this.shuffledAnswers = this.shuffleArray([...this.answers]);
     this.timeoutIds.push(
       setTimeout(() => {
         this.animationState = 'visible';
@@ -62,6 +64,14 @@ export class FlashcardComponent implements OnDestroy {
 
   ngOnDestroy() {
     this.timeoutIds.forEach(id => clearTimeout(id));
+  }
+
+  private shuffleArray(arr: string[]): string[] {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
   }
 
   selectAnswer(answer: string) {

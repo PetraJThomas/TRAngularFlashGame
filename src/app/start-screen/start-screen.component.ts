@@ -1,4 +1,5 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
+import { trigger, transition, style, animate } from '@angular/animations';
 import { Router, RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
@@ -12,7 +13,15 @@ import { DeckInfo, DeckService } from '../deck.service';
   imports: [CommonModule, MatButtonModule, MatDividerModule, MatIconModule, MatCardModule, RouterModule],
   changeDetection: ChangeDetectionStrategy.OnPush,
   templateUrl: './start-screen.component.html',
-  styleUrl: './start-screen.component.scss'
+  styleUrl: './start-screen.component.scss',
+  animations: [
+    trigger('fadeScaleIn', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'scale(0.9)' }),
+        animate('400ms ease-out', style({ opacity: 1, transform: 'scale(1)' })),
+      ]),
+    ]),
+  ],
 })
 export class StartScreenComponent implements OnInit {
   private deckService = inject(DeckService);

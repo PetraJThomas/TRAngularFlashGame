@@ -19,7 +19,7 @@
   </app-flashcard>
 </div>
 
-<div class="results" *ngIf="showResults">
+<div class="results" *ngIf="showResults && !leavingResults" @fadeScale (@fadeScale.done)="onResultsLeave()">
   <div class="results-header">
     <mat-icon class="celebration-icon">celebration</mat-icon>
     <h2>Let's see how you did!</h2>
@@ -52,5 +52,8 @@
     </table>
   </div>
 
-  <button style="margin-top: 1rem;" mat-raised-button color="primary" (click)="startNewGame()">Start New Game</button>
+  <div class="results-actions">
+    <button mat-raised-button color="primary" (click)="replay()">Replay</button>
+    <button mat-raised-button (click)="startNewGame()">Start New Game</button>
+  </div>
 </div>

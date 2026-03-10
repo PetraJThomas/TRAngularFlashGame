@@ -18,8 +18,9 @@ Angular 19 standalone component flash card game with SSR support. No NgModules �
 
 - **AppComponent** — Root shell with animated background (25 rotating colored spheres via CSS keyframes) and `<router-outlet>`
 - **StartScreenComponent** — Landing page with Material card and start button, navigates to `/game`. Uses OnPush change detection.
-- **GameScreenComponent** — Game orchestrator. Holds all game state locally (no global state management). Contains the flashcard question bank (~58 questions on Angular, .NET, auth, RxJS). Manages score, card shuffling (Fisher-Yates), answer tracking, and results display.
-- **FlashcardComponent** — Reusable card display with Angular animations (fade-in scale → zoom-out transitions). Communicates via `@Input` (question data, feedback state) and `@Output` (`transitionComplete` event emitting `{ isCorrect, userAnswer }`).
+- **GameScreenComponent** — Game orchestrator. Holds all game state locally (no global state management). Loads questions from DeckService (5 decks, ~56 questions total). Manages score, card shuffling (Fisher-Yates), answer tracking, and results display.
+- **ThemeToggleComponent** — FAB panel with dark mode toggle and accent hue slider (0-360). Persists preferences to localStorage.
+- **FlashcardComponent** — Reusable card display with Angular animations (fade-in scale → zoom-out transitions). Shuffles answer positions on each render to prevent memorization. Communicates via `@Input` (question data, feedback state) and `@Output` (`transitionComplete` event emitting `{ isCorrect, userAnswer }`).
 
 ### Routes (`app.routes.ts`)
 
@@ -29,7 +30,8 @@ Angular 19 standalone component flash card game with SSR support. No NgModules �
 
 ### Services
 
-- **FlashcardService** — Injectable score tracker (`updateScore`, `getScore`). Currently defined but game state is managed locally in GameScreenComponent.
+- **DeckService** — Stateless async data fetcher. Loads deck index (`_index.json`) and individual deck JSON files from `public/flash-questions/` via `fetch()`. SSR-safe with `isPlatformBrowser` guard.
+- **ThemeService** — Signal-based theme state manager. Dynamic M3 palette generation from hue value, dark mode toggle, localStorage persistence.
 
 ### Styling
 

@@ -74,6 +74,11 @@ function generateM3Tokens(hue: number): Record<string, string> {
     ...paletteTokens('secondary', hue, secondarySat),
     ...paletteTokens('tertiary', tertiaryHue, tertiarySat),
     '--mat-sys-surface-tint': `light-dark(${tp(42)}, ${tp(82)})`,
+
+    // Vivid particle shades for animated background
+    '--app-particle-light': hslToHex(hue, 60, 85),
+    '--app-particle-mid': hslToHex(hue, 65, 75),
+    '--app-particle-bold': hslToHex(hue, 70, 65),
   };
 }
 

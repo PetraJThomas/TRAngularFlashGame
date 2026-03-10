@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { trigger, state, style, transition, animate, keyframes } from '@angular/animations';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
@@ -30,7 +30,7 @@ import { CommonModule } from '@angular/common';
     ])
   ]
 })
-export class FlashcardComponent {
+export class FlashcardComponent implements OnDestroy {
   @Input() question: string = '';
   @Input() answers: string[] = [];
   @Input() correctAnswer: string = '';
@@ -39,27 +39,40 @@ export class FlashcardComponent {
   @Output() transitionComplete = new EventEmitter<{ isCorrect: boolean; userAnswer: string }>();
 
   animationState: 'default' | 'visible' | 'zoomOut' = 'default';
+  private answered = false;
+  private timeoutIds: ReturnType<typeof setTimeout>[] = [];
 
   ngOnInit() {
-    setTimeout(() => {
-      this.animationState = 'visible'; // First card fades in
-    }, 500);
+    this.timeoutIds.push(
+      setTimeout(() => {
+        this.animationState = 'visible';
+      }, 500)
+    );
 
     if (this.isFeedback) {
-      // Auto-transition feedback card after x seconds
-      setTimeout(() => {
-        this.animationState = 'zoomOut'; // Trigger fly-through effect
-        setTimeout(() => this.transitionComplete.emit(), 700); // Emit event after animation
-      }, 1000);
+      this.timeoutIds.push(
+        setTimeout(() => {
+          this.animationState = 'zoomOut';
+        }, 1000)
+      );
     }
   }
-  
-  selectAnswer(answer: string) {
-    const isCorrect = answer === this.correctAnswer;
-    this.animationState = 'zoomOut'; // Zoom out effect
 
-    setTimeout(() => {
-      this.transitionComplete.emit({ isCorrect, userAnswer: answer }); // ✅ Emit correct object
-    }, 700);
+  ngOnDestroy() {
+    this.timeoutIds.forEach(id => clearTimeout(id));
+  }
+
+  selectAnswer(answer: string) {
+    if (this.answered) return;
+    this.answered = true;
+
+    const isCorrect = answer === this.correctAnswer;
+    this.animationState = 'zoomOut';
+
+    this.timeoutIds.push(
+      setTimeout(() => {
+        this.transitionComplete.emit({ isCorrect, userAnswer: answer });
+      }, 700)
+    );
   }
 }

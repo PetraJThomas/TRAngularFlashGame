@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { provideNoopAnimations } from '@angular/platform-browser/animations';
 
 import { FlashcardComponent } from './flashcard.component';
 
@@ -8,7 +9,8 @@ describe('FlashcardComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [FlashcardComponent]
+      imports: [FlashcardComponent],
+      providers: [provideNoopAnimations()]
     })
     .compileComponents();
 

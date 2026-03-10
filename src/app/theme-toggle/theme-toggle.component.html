@@ -1,0 +1,34 @@
+<div class="theme-toggle-container" (click)="$event.stopPropagation()">
+  @if (panelOpen()) {
+    <div class="theme-panel">
+      <div class="panel-row">
+        <span class="panel-label">Dark mode</span>
+        <mat-slide-toggle
+          [checked]="theme.darkMode()"
+          (change)="theme.toggleDarkMode()">
+        </mat-slide-toggle>
+      </div>
+      <div class="panel-row hue-row">
+        <span class="panel-label">Accent</span>
+        <div class="hue-controls">
+          <input
+            type="range"
+            class="hue-slider"
+            min="0"
+            max="360"
+            step="1"
+            [value]="theme.hue()"
+            (input)="onHueChange($event)"
+            aria-label="Accent hue">
+          <div
+            class="hue-preview"
+            [style.background-color]="'hsl(' + theme.hue() + ', 60%, 45%)'">
+          </div>
+        </div>
+      </div>
+    </div>
+  }
+  <button mat-fab (click)="togglePanel($event)" class="fab-button" aria-label="Theme settings">
+    <mat-icon>palette</mat-icon>
+  </button>
+</div>

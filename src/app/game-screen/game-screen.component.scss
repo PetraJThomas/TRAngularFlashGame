@@ -7,7 +7,7 @@
   
   .results {
     text-align: center;
-    background-color: white;
+    background-color: var(--mat-sys-surface-container-lowest);
     padding: 1rem;
     border-radius: 1rem;
   }
@@ -19,18 +19,18 @@
   }
   
   th, td {
-    border: 1px solid #ddd;
+    border: 1px solid var(--mat-sys-outline-variant);
     padding: 10px;
     text-align: center;
   }
   
   .correct {
-    color: green;
+    color: var(--app-success);
     font-weight: bold;
   }
   
   .incorrect {
-    color: red;
+    color: var(--mat-sys-error);
     font-weight: bold;
   }
   

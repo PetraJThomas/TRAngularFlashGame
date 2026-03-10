@@ -227,6 +227,9 @@ html {
   --mat-sys-corner-none: 0;
   --mat-sys-corner-small: 8px;
 
+  /* APP-SPECIFIC TOKENS */
+  --app-success: light-dark(#2E7D32, #81C784);
+
   /* STATE SYSTEM VARIABLES */
   --mat-sys-dragged-state-layer-opacity: 0.16;
   --mat-sys-focus-state-layer-opacity: 0.12;

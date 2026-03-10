@@ -3,18 +3,34 @@
     padding: 20px;
     text-align: center;
     border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--mat-sys-level3);
+    background-color: light-dark(
+      color-mix(in srgb, var(--mat-sys-primary-container) 60%, white),
+      color-mix(in srgb, var(--mat-sys-primary-container) 25%, #1c1b21)
+    ) !important;
+    color: light-dark(var(--mat-sys-on-primary-container), #e6e0ea);
   }
-  
+
   .question {
     font-size: 1.2rem;
     font-weight: bold;
     margin-bottom: 15px;
   }
-  
-  mat-card-actions {
+
+  .answers {
     display: flex;
     flex-direction: column;
     gap: 10px;
   }
-  
+
+  .answer-btn {
+    background-color: var(--mat-sys-primary-container) !important;
+    color: var(--mat-sys-on-primary-container) !important;
+    border-radius: 8px;
+    border: 2px solid transparent;
+    transition: border-color 0.2s;
+
+    &:hover {
+      border-color: var(--mat-sys-primary);
+    }
+  }

@@ -1,4 +1,5 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterModule } from '@angular/router';
 
 import { StartScreenComponent } from './start-screen.component';
 
@@ -8,7 +9,7 @@ describe('StartScreenComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [StartScreenComponent]
+      imports: [StartScreenComponent, RouterModule.forRoot([])]
     })
     .compileComponents();
 

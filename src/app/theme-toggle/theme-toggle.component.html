@@ -1,6 +1,5 @@
 <div class="theme-toggle-container" (click)="$event.stopPropagation()">
-  @if (panelOpen()) {
-    <div class="theme-panel">
+  <div *ngIf="panelOpen()" @panelSlide class="theme-panel">
       <div class="panel-row">
         <span class="panel-label">Dark mode</span>
         <mat-slide-toggle
@@ -26,8 +25,7 @@
           </div>
         </div>
       </div>
-    </div>
-  }
+  </div>
   <button mat-fab (click)="togglePanel($event)" class="fab-button" aria-label="Theme settings">
     <mat-icon>palette</mat-icon>
   </button>

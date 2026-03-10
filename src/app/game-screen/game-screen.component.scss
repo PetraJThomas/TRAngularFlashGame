@@ -7,8 +7,8 @@
 
 .results {
   text-align: center;
-  background-color: var(--mat-sys-primary-container);
-  color: var(--mat-sys-on-primary-container);
+  background-color: light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container));
+  color: light-dark(var(--mat-sys-on-primary-container), var(--mat-sys-on-surface));
   border-radius: 1.5rem;
   max-width: 900px;
   margin: 2rem auto;
@@ -26,7 +26,7 @@
   color: var(--mat-sys-on-primary);
   padding: 1.5rem 1rem;
   border-radius: 1.5rem;
-  border: 5px var(--mat-sys-primary-container) solid;
+  border: 5px light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container)) solid;
 
   h2 {
     margin: 0.5rem 0 0.25rem;

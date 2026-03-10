@@ -10,7 +10,7 @@ mat-card {
   padding: 24px 16px 16px;
   background: linear-gradient(135deg, var(--mat-sys-primary), color-mix(in srgb, var(--mat-sys-primary) 70%, var(--mat-sys-tertiary)));
   border-radius: 12px;
-  border: 5px white solid;
+  border: 5px light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container)) solid;
 
   .header-title {
     margin: 0;

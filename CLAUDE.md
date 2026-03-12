@@ -16,8 +16,8 @@ Angular 19 standalone component flash card game with SSR support. No NgModules �
 
 ### Component Structure
 
-- **AppComponent** — Root shell with animated background (25 rotating colored spheres via CSS keyframes) and `<router-outlet>`
-- **StartScreenComponent** — Landing page with Material card and start button, navigates to `/game`. Uses OnPush change detection.
+- **AppComponent** — Root shell with animated background (25 rotating colored spheres via CSS keyframes, outside fade layer) and `<router-outlet>`. Has page-level fade-in (2s) / fade-out (400ms) Angular animation (`@pageFade`). Includes a fixed "Portfolio" back-link button (top-left) that triggers fade-out then navigates to the portfolio site.
+- **StartScreenComponent** — Landing page with Material card and start button, navigates to `/game`. Uses OnPush change detection. Card is gated on `decks.length` to prevent empty-state flash before data loads.
 - **GameScreenComponent** — Game orchestrator. Holds all game state locally (no global state management). Loads questions from DeckService (5 decks, ~56 questions total). Manages score, card shuffling (Fisher-Yates), answer tracking, and results display.
 - **ThemeToggleComponent** — FAB panel with dark mode toggle and accent hue slider (0-360). Persists preferences to localStorage.
 - **FlashcardComponent** — Reusable card display with Angular animations (fade-in scale → zoom-out transitions). Shuffles answer positions on each render to prevent memorization. Communicates via `@Input` (question data, feedback state) and `@Output` (`transitionComplete` event emitting `{ isCorrect, userAnswer }`).

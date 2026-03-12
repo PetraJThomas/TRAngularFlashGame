@@ -43,3 +43,7 @@ Angular 19 standalone component flash card game with SSR support. No NgModules â
 ### SSR
 
 Express-based SSR via `src/server.ts` using `@angular/ssr/node`. Prerendering is disabled in angular.json (`"prerender": false`) to avoid route extraction issues.
+
+### Project Admin Docs
+
+`project_admin/` is a **separate git repository** (gitignored from the main repo). It lives on an orphaned branch `trangularflashgame` in the `PetraJThomas/project-admins` remote. Contains `spec.md`, `implementation.md`, `completed.md`, and `learnings.md`. Commit and push there independently when updating project docs.

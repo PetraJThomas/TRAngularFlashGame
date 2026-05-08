@@ -38,22 +38,21 @@
 }
 
 .results {
+  display: flex;
+  flex-direction: column;
   text-align: center;
   background-color: light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container));
   color: light-dark(var(--mat-sys-on-primary-container), var(--mat-sys-on-surface));
   border-radius: 1.5rem;
   max-width: 900px;
+  max-height: calc(100vh - 4rem);
   margin: 2rem auto;
   padding-bottom: 1.5rem;
-  overflow-y: hidden;
-
-  @media (max-height: 700px) {
-    max-height: 80vh;
-    overflow-y: auto;
-  }
+  overflow: hidden;
 }
 
 .results-header {
+  flex: 0 0 auto;
   background: linear-gradient(135deg, var(--mat-sys-primary) 0%, var(--mat-sys-tertiary) 100%);
   color: var(--mat-sys-on-primary);
   padding: 1.5rem 1rem;
@@ -79,6 +78,9 @@
 }
 
 .results-table-container {
+  flex: 1 1 auto;
+  min-height: 0;
+  overflow-y: auto;
   padding: 1rem;
 }
 
@@ -92,15 +94,15 @@ table {
 }
 
 th {
-  background-color: var(--mat-sys-surface-container-high);
-  color: var(--mat-sys-on-surface);
+  background-color: light-dark(var(--mat-sys-primary), var(--mat-sys-surface-container-high));
+  color: light-dark(var(--mat-sys-on-primary), var(--mat-sys-on-surface));
   padding: 12px 10px;
   text-align: center;
   font-weight: 600;
   border-bottom: 2px solid color-mix(in srgb, var(--mat-sys-primary) 40%, transparent);
 
   &:not(:last-child) {
-    border-right: 1px solid color-mix(in srgb, var(--mat-sys-primary) 40%, transparent);
+    border-right: 1px solid color-mix(in srgb, var(--mat-sys-on-primary) 30%, transparent);
   }
 }
 
@@ -123,6 +125,7 @@ tbody tr:hover {
 }
 
 .results-actions {
+  flex: 0 0 auto;
   display: flex;
   justify-content: center;
   gap: 1rem;
@@ -137,4 +140,46 @@ tbody tr:hover {
 .incorrect {
   color: var(--mat-sys-error);
   font-weight: bold;
+}
+
+.skipped {
+  color: var(--mat-sys-on-surface-variant);
+  font-style: italic;
+  font-weight: 500;
+}
+
+mat-icon.skipped {
+  font-style: normal;
+}
+
+.game-controls {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+  background: light-dark(
+    color-mix(in srgb, var(--mat-sys-primary-container) 90%, transparent),
+    color-mix(in srgb, var(--mat-sys-surface-container) 90%, transparent)
+  );
+  backdrop-filter: blur(8px);
+  border-radius: 999px;
+  border: 1px solid color-mix(in srgb, var(--mat-sys-primary) 30%, transparent);
+  box-shadow: var(--mat-sys-level2);
+  z-index: 10;
+
+  .control-btn {
+    color: light-dark(var(--mat-sys-on-primary-container), var(--mat-sys-on-surface));
+    border-radius: 999px;
+
+    mat-icon {
+      margin-right: 0.25rem;
+    }
+
+    &--warn {
+      color: var(--mat-sys-error);
+    }
+  }
 }

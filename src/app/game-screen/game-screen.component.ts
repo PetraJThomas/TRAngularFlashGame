@@ -1,8 +1,8 @@
-import { Component, Input, OnDestroy, OnInit, inject } from '@angular/core';
+import { Component, Input, OnDestroy, OnInit, PLATFORM_ID, inject } from '@angular/core';
 import { trigger, transition, style, animate } from '@angular/animations';
 import { Router } from '@angular/router';
 import { FlashcardComponent } from '../flashcard/flashcard.component';
-import { CommonModule } from '@angular/common';
+import { CommonModule, isPlatformBrowser } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
@@ -24,11 +24,21 @@ import { DeckService, Question } from '../deck.service';
         animate('300ms ease-in', style({ opacity: 0, transform: 'scale(0.9)' })),
       ]),
     ]),
+    trigger('fadeQuick', [
+      transition(':enter', [
+        style({ opacity: 0, transform: 'translate(-50%, 8px)' }),
+        animate('200ms ease-out', style({ opacity: 1, transform: 'translate(-50%, 0)' })),
+      ]),
+      transition(':leave', [
+        animate('150ms ease-in', style({ opacity: 0, transform: 'translate(-50%, 8px)' })),
+      ]),
+    ]),
   ],
 })
 export class GameScreenComponent implements OnInit, OnDestroy {
   private deckService = inject(DeckService);
   private router = inject(Router);
+  private platformId = inject(PLATFORM_ID);
 
   @Input() deck = '';
 
@@ -40,6 +50,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   showingFeedback = false;
   feedbackMessage = '';
   isCorrectFeedback = false;
+  isSkippedFeedback = false;
   leavingResults = false;
   private pendingAction: (() => void) | null = null;
   score = 0;
@@ -48,10 +59,23 @@ export class GameScreenComponent implements OnInit, OnDestroy {
     userAnswer: string;
     correctAnswer: string;
     isCorrect: boolean;
+    skipped?: boolean;
   }[] = [];
   private nextCardTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   async ngOnInit() {
+    if (!isPlatformBrowser(this.platformId)) return;
+
+    if (!this.deck) {
+      this.router.navigate(['/']);
+      return;
+    }
+
+    if (this.deck === 'imported' && !this.deckService.getImportedDeck()) {
+      this.router.navigate(['/']);
+      return;
+    }
+
     this.flashcards = await this.loadQuestionsForDeck();
     if (!this.flashcards.length) {
       this.router.navigate(['/']);
@@ -82,6 +106,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   handleAnswer({ isCorrect, userAnswer }: { isCorrect: boolean; userAnswer: string }) {
     this.feedbackMessage = isCorrect ? 'You Got It!' : 'Better Luck Next Time.';
     this.isCorrectFeedback = isCorrect;
+    this.isSkippedFeedback = false;
 
     this.userResponses.push({
       question: this.currentCard.question,
@@ -99,6 +124,52 @@ export class GameScreenComponent implements OnInit, OnDestroy {
     this.nextCardTimeoutId = setTimeout(() => this.loadNextCard(), 2000);
   }
 
+
+  skipQuestion() {
+    if (this.showingFeedback || !this.currentCard) return;
+
+    this.userResponses.push({
+      question: this.currentCard.question,
+      userAnswer: '—',
+      correctAnswer: this.currentCard.correctAnswer,
+      isCorrect: false,
+      skipped: true,
+    });
+
+    this.feedbackMessage = 'Skipped';
+    this.isCorrectFeedback = false;
+    this.isSkippedFeedback = true;
+    this.showingFeedback = true;
+    this.nextCardTimeoutId = setTimeout(() => this.loadNextCard(), 2000);
+  }
+
+  forfeit() {
+    if (this.nextCardTimeoutId) {
+      clearTimeout(this.nextCardTimeoutId);
+      this.nextCardTimeoutId = null;
+    }
+
+    for (let i = this.userResponses.length; i < this.flashcards.length; i++) {
+      this.userResponses.push({
+        question: this.flashcards[i].question,
+        userAnswer: '—',
+        correctAnswer: this.flashcards[i].correctAnswer,
+        isCorrect: false,
+        skipped: true,
+      });
+    }
+
+    this.showingFeedback = false;
+    this.showResults = true;
+  }
+
+  backToSelection() {
+    if (this.nextCardTimeoutId) {
+      clearTimeout(this.nextCardTimeoutId);
+      this.nextCardTimeoutId = null;
+    }
+    this.router.navigate(['/']);
+  }
 
   loadNextCard() {
     this.showingFeedback = false;
@@ -131,6 +202,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
       this.leavingResults = false;
       this.showingFeedback = false;
       this.feedbackMessage = '';
+      this.isSkippedFeedback = false;
       this.score = 0;
       this.userResponses = [];
       this.loading = true;

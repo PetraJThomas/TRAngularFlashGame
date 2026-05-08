@@ -38,6 +38,7 @@ export class FlashcardComponent implements OnDestroy {
   @Input() isFeedback: boolean = false;
   @Input() feedbackMessage: string = '';
   @Input() isCorrectFeedback: boolean = false;
+  @Input() isSkippedFeedback: boolean = false;
   @Output() transitionComplete = new EventEmitter<{ isCorrect: boolean; userAnswer: string }>();
 
   shuffledAnswers: string[] = [];

@@ -9,8 +9,12 @@
   </mat-card-content>
 
   <mat-card-content *ngIf="isFeedback">
-    <mat-icon class="feedback-icon" [ngClass]="{ 'correct': isCorrectFeedback, 'incorrect': !isCorrectFeedback }">
-      {{ isCorrectFeedback ? 'check_circle' : 'cancel' }}
+    <mat-icon class="feedback-icon" [ngClass]="{
+      'correct': !isSkippedFeedback && isCorrectFeedback,
+      'incorrect': !isSkippedFeedback && !isCorrectFeedback,
+      'skipped': isSkippedFeedback
+    }">
+      {{ isSkippedFeedback ? 'skip_next' : (isCorrectFeedback ? 'check_circle' : 'cancel') }}
     </mat-icon>
     <p class="feedback">{{ feedbackMessage }}</p>
   </mat-card-content>

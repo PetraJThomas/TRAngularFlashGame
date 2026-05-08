@@ -18,8 +18,24 @@
     *ngIf="showingFeedback"
     [isFeedback]="true"
     [feedbackMessage]="feedbackMessage"
-    [isCorrectFeedback]="isCorrectFeedback">
+    [isCorrectFeedback]="isCorrectFeedback"
+    [isSkippedFeedback]="isSkippedFeedback">
   </app-flashcard>
+
+  <div class="game-controls" *ngIf="!showingFeedback" @fadeQuick>
+    <button mat-button class="control-btn" (click)="backToSelection()">
+      <mat-icon>arrow_back</mat-icon>
+      Quiz selection
+    </button>
+    <button mat-button class="control-btn" (click)="skipQuestion()">
+      <mat-icon>skip_next</mat-icon>
+      Skip
+    </button>
+    <button mat-button class="control-btn control-btn--warn" (click)="forfeit()">
+      <mat-icon>flag</mat-icon>
+      Forfeit
+    </button>
+  </div>
 </div>
 
 <div class="results" *ngIf="showResults && !leavingResults" @fadeScale (@fadeScale.done)="onResultsLeave()">
@@ -42,13 +58,18 @@
       <tbody>
         <tr *ngFor="let response of userResponses">
           <td>{{ response.question }}</td>
-          <td [ngClass]="{ 'correct': response.isCorrect, 'incorrect': !response.isCorrect }">
-            {{ response.userAnswer }}
+          <td [ngClass]="{
+            'correct': response.isCorrect,
+            'incorrect': !response.isCorrect && !response.skipped,
+            'skipped': response.skipped
+          }">
+            {{ response.skipped ? 'Skipped' : response.userAnswer }}
           </td>
           <td>{{ response.correctAnswer }}</td>
           <td>
-            <mat-icon *ngIf="response.isCorrect" class="correct">check_circle</mat-icon>
-            <mat-icon *ngIf="!response.isCorrect" class="incorrect">cancel</mat-icon>
+            <mat-icon *ngIf="response.skipped" class="skipped">remove_circle_outline</mat-icon>
+            <mat-icon *ngIf="!response.skipped && response.isCorrect" class="correct">check_circle</mat-icon>
+            <mat-icon *ngIf="!response.skipped && !response.isCorrect" class="incorrect">cancel</mat-icon>
           </td>
         </tr>
       </tbody>

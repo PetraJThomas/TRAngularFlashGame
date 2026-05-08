@@ -37,6 +37,10 @@
     &.incorrect {
       color: var(--mat-sys-error);
     }
+
+    &.skipped {
+      color: var(--mat-sys-on-surface-variant);
+    }
   }
 
   .answer-btn {

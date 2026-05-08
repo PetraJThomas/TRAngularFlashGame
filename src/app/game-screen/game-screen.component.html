@@ -1,5 +1,8 @@
 <div class="loading" *ngIf="loading">
-  <p>Loading questions...</p>
+  <div class="loading-card" @fadeScale>
+    <mat-progress-spinner mode="indeterminate" diameter="48" strokeWidth="4"></mat-progress-spinner>
+    <p class="loading-text">Loading questions…</p>
+  </div>
 </div>
 
 <div class="game" *ngIf="!showResults && !loading">

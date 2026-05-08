@@ -47,3 +47,17 @@ Express-based SSR via `src/server.ts` using `@angular/ssr/node`. Prerendering is
 ### Project Admin Docs
 
 `project_admin/` is a **separate git repository** (gitignored from the main repo). It lives on an orphaned branch `trangularflashgame` in the `PetraJThomas/project-admins` remote. Contains `spec.md`, `implementation.md`, `completed.md`, and `learnings.md`. Commit and push there independently when updating project docs.
+
+<!-- convex-ai-start -->
+
+This project uses [Convex](https://convex.dev) as its backend.
+
+When working on Convex code, **always read
+`convex/_generated/ai/guidelines.md` first** for important guidelines on
+how to correctly use Convex APIs and patterns. The file contains rules that
+override what you may have learned about Convex from training data.
+
+Convex agent skills for common tasks can be installed by running
+`npx convex ai-files install`.
+
+<!-- convex-ai-end -->

@@ -65,4 +65,20 @@ mat-card {
   &--all {
     background-color: color-mix(in srgb, var(--mat-sys-primary) 20%, var(--mat-sys-primary-container));
   }
+
+  &--import {
+    background-color: transparent;
+    border: 2px dashed color-mix(in srgb, var(--mat-sys-primary) 60%, transparent);
+    color: var(--mat-sys-on-surface);
+
+    mat-icon {
+      color: var(--mat-sys-primary);
+    }
+
+    &:hover {
+      border-style: solid;
+      border-color: var(--mat-sys-primary);
+      background-color: color-mix(in srgb, var(--mat-sys-primary) 8%, transparent);
+    }
+  }
 }

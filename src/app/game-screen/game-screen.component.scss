@@ -5,6 +5,38 @@
   height: 100vh;
 }
 
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.loading-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 2.5rem;
+  background: linear-gradient(135deg, var(--mat-sys-primary), color-mix(in srgb, var(--mat-sys-primary) 70%, var(--mat-sys-tertiary)));
+  border-radius: 1.5rem;
+  border: 5px light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container)) solid;
+  color: var(--mat-sys-on-primary);
+  box-shadow: var(--mat-sys-level2);
+
+  ::ng-deep .mdc-circular-progress__determinate-circle,
+  ::ng-deep .mdc-circular-progress__indeterminate-circle-graphic {
+    stroke: var(--mat-sys-on-primary) !important;
+  }
+
+  .loading-text {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 500;
+    letter-spacing: 0.01em;
+  }
+}
+
 .results {
   text-align: center;
   background-color: light-dark(var(--mat-sys-primary-container), var(--mat-sys-surface-container));

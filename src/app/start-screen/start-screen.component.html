@@ -5,7 +5,7 @@
   </div>
   <mat-card-content>
     <div class="deck-grid">
-      <button class="deck-card" *ngFor="let deck of decks" (click)="selectDeck(deck.file)">
+      <button class="deck-card" *ngFor="let deck of decks" (click)="selectDeck(deck.slug)">
         <span class="deck-name">{{ deck.name }}</span>
         <span class="deck-count">{{ deck.count }} questions</span>
       </button>
@@ -13,6 +13,12 @@
         <span class="deck-name">All Questions</span>
         <span class="deck-count">{{ totalCount }} questions</span>
       </button>
+      <button class="deck-card deck-card--import" (click)="triggerImport()">
+        <mat-icon>upload_file</mat-icon>
+        <span class="deck-name">Import deck from file</span>
+        <span class="deck-count">JSON · stored in memory</span>
+      </button>
     </div>
+    <input #fileInput type="file" accept="application/json,.json" hidden (change)="onFileSelected($event)" />
   </mat-card-content>
 </mat-card>

@@ -5,6 +5,7 @@ import { FlashcardComponent } from '../flashcard/flashcard.component';
 import { CommonModule } from '@angular/common';
 import { MatButton } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { DeckService, Question } from '../deck.service';
 
 @Component({
@@ -12,7 +13,7 @@ import { DeckService, Question } from '../deck.service';
   standalone: true,
   templateUrl: './game-screen.component.html',
   styleUrls: ['./game-screen.component.scss'],
-  imports: [FlashcardComponent, CommonModule, MatButton, MatIconModule],
+  imports: [FlashcardComponent, CommonModule, MatButton, MatIconModule, MatProgressSpinnerModule],
   animations: [
     trigger('fadeScale', [
       transition(':enter', [
@@ -51,14 +52,25 @@ export class GameScreenComponent implements OnInit, OnDestroy {
   private nextCardTimeoutId: ReturnType<typeof setTimeout> | null = null;
 
   async ngOnInit() {
-    if (this.deck === 'all' || !this.deck) {
-      this.flashcards = await this.deckService.loadAllDecks();
-    } else {
-      this.flashcards = await this.deckService.loadDeck(this.deck);
+    this.flashcards = await this.loadQuestionsForDeck();
+    if (!this.flashcards.length) {
+      this.router.navigate(['/']);
+      return;
     }
     this.flashcards = this.shuffleArray([...this.flashcards]);
     this.currentCard = this.flashcards[this.currentIndex];
     this.loading = false;
+  }
+
+  private async loadQuestionsForDeck(): Promise<Question[]> {
+    if (this.deck === 'imported') {
+      const imported = this.deckService.getImportedDeck();
+      return imported ? imported.questions : [];
+    }
+    if (this.deck === 'all' || !this.deck) {
+      return this.deckService.loadAllDecks();
+    }
+    return this.deckService.loadDeck(this.deck);
   }
 
   ngOnDestroy() {
@@ -123,11 +135,7 @@ export class GameScreenComponent implements OnInit, OnDestroy {
       this.userResponses = [];
       this.loading = true;
 
-      if (this.deck === 'all' || !this.deck) {
-        this.flashcards = await this.deckService.loadAllDecks();
-      } else {
-        this.flashcards = await this.deckService.loadDeck(this.deck);
-      }
+      this.flashcards = await this.loadQuestionsForDeck();
       this.flashcards = this.shuffleArray([...this.flashcards]);
       this.currentCard = this.flashcards[this.currentIndex];
       this.loading = false;
